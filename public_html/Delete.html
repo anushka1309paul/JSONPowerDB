@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+<head>
+<title>Delete data</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
+</head>
+<body>
+<div class="container">
+<h2>Delete data</h2>
+<form id="empForm" method="post">
+<div class="form-group">
+<p>Enter Record (Employee) ID that you wish to delete from the database</p>
+<span><label for="empId">Employee ID:</label> <label id="empIdMsg">
+</label></span>
+<input type="text" class="form-control" name="empId" id="empId"
+placeholder="Enter Employee ID" required>
+</div>
+
+<input type="button" class="btn btn-primary" id="empDel" value="Delete"
+onclick="deleteEmp();">
+</form>
+</div>
+    <script>
+        $("#empId").focus();function validateAndGetFormData() {
+        var empIdVar = $("#empId").val();
+        if (empIdVar === "") {
+        alert("Employee ID Required Value");
+        $("#empId").focus();
+        return "";
+        }
+        
+        var jsonStrObj = {
+        empId: empIdVar
+        };
+        return JSON.stringify(jsonStrObj);
+        }
+
+        function resetForm() {
+        $("#empId").val("")
+        $("#empId").focus();
+        }
+        function deleteEmp() {
+            var jsonStr = validateAndGetFormData();
+            if (jsonStr === "") {
+            return;
+            }
+            var empID1=$("#empId").val();;
+            var delReqStr = createREMOVERecordRequest("90935713|-31948839971371841|90934896", "SAMPLE", "EMP-REL",empID1);
+            alert(delReqStr);
+            jQuery.ajaxSetup({async: false});
+            var resultObj = executeCommandAtGivenBaseUrl(delReqStr,
+            "http://api.login2explore.com:5577", "/api/iml");
+            alert(JSON.stringify(resultObj));
+            jQuery.ajaxSetup({async: true});
+            resetForm();
+        }
+    </script>
+ </body>
+</html>
+
