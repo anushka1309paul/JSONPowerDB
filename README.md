@@ -9,6 +9,7 @@ JsonPowerDB is a Real-time, High Performance, Lightweight and Simple to Use, Res
 
 
 **Benefits of using JsonPowerDB**
+
 1.Simplest way to retrieve data in a JSON format.
 
 2.Schema-free, Simple to use, Nimble and In-Memory database.
@@ -25,3 +26,9 @@ User Dashboard:
 ![Screenshot (21)](https://user-images.githubusercontent.com/56549326/111952166-beaee980-8b0a-11eb-9b76-f0d6cd2c9870.png)
 Records:
 ![Screenshot (19)](https://user-images.githubusercontent.com/56549326/111952252-d9815e00-8b0a-11eb-943c-c91c7f3cbee3.png)
+
+**Release History**
+
+0.2.1
+
+CHANGE: Added basic files and updated the README.md
